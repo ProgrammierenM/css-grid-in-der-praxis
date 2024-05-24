@@ -1,0 +1,227 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #222;
+  font-size: 1.6rem;
+}
+
+section {
+  min-height: 100vh;
+}
+
+/* ################################################### */
+
+.beispiel-01 {
+  display: grid;
+  place-items: center;
+}
+
+.beispiel-01 img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+/* ################################################### */
+
+.beispiel-02 {
+  display: grid;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); */
+  grid-template-rows: repeat(auto-fit, 400px);
+  gap: 16px;
+}
+
+.beispiel-02 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 991px) {
+  .beispiel-02 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .beispiel-02 {
+    grid-template-columns: 100%;
+  }
+}
+
+/* ################################################### */
+
+.beispiel-03 {
+  padding: 64px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 120px);
+  gap: 16px;
+}
+
+.beispiel-03 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.beispiel-03 img:nth-child(1) {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.beispiel-03 img:nth-child(2) {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.beispiel-03 img:nth-child(3) {
+  grid-column-start: 5;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 6;
+}
+
+.beispiel-03 img:nth-child(4) {
+  grid-column-start: 5;
+  grid-column-end: 9;
+  grid-row-start: 6;
+  grid-row-end: 9;
+}
+
+.beispiel-03 img:nth-child(5) {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 9;
+}
+
+/* ################################################### */
+
+.beispiel-04 {
+  padding: 64px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 120px);
+  grid-template-areas:
+    "XX XX YY YY ZZ ZZ ZZ ZZ"
+    "XX XX YY YY ZZ ZZ ZZ ZZ"
+    "LL LL LL LL ZZ ZZ ZZ ZZ"
+    "LL LL LL LL ZZ ZZ ZZ ZZ"
+    "LL LL LL LL ZZ ZZ ZZ ZZ"
+    "LL LL LL LL DD DD DD DD"
+    "LL LL LL LL DD DD DD DD"
+    "LL LL LL LL DD DD DD DD";
+  gap: 16px;
+}
+
+.beispiel-04 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.beispiel-04 img:nth-child(1) {
+  grid-area: XX;
+}
+
+.beispiel-04 img:nth-child(2) {
+  grid-area: YY;
+}
+
+.beispiel-04 img:nth-child(3) {
+  grid-area: ZZ;
+}
+
+.beispiel-04 img:nth-child(4) {
+  grid-area: DD;
+}
+
+.beispiel-04 img:nth-child(5) {
+  grid-area: LL;
+}
+
+@media screen and (max-width: 768px) {
+  .beispiel-04 {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(auto-fit, 400px);
+    grid-template-areas:
+      "XX"
+      "YY"
+      "ZZ"
+      "LL"
+      "DD";
+  }
+}
+
+/* ################################################### */
+
+.beispiel-05 {
+  padding: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fit, 100px);
+  grid-template-areas:
+    "XX XX ZZ ZZ"
+    "XX XX ZZ ZZ"
+    "FF FF ZZ ZZ"
+    "FF FF ZZ ZZ";
+  gap: 16px;
+}
+
+.beispiel-05 > div {
+  width: 100%;
+  height: 100%;
+  padding: 0 16px 16px;
+  color: white;
+}
+
+.beispiel-05 > div > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.beispiel-05 > div:nth-child(1) {
+  background-color: darkslateblue;
+  grid-area: XX;
+}
+
+.beispiel-05 > div:nth-child(2) {
+  background-color: darkslategray;
+  grid-area: FF;
+}
+
+.beispiel-05 > div:nth-child(3) {
+  background-color: darkolivegreen;
+  grid-area: ZZ;
+}
+
+.beispiel-05 > div:nth-child(3) > p {
+  -webkit-line-clamp: 11;
+}
+
+@media screen and (max-width: 768px) {
+  .beispiel-05 {
+    grid-template-columns: 100%;
+    grid-template-rows: unset;
+    grid-template-areas:
+      "XX"
+      "FF"
+      "ZZ";
+  }
+
+  .beispiel-05 > div > p {
+    display: block;
+  }
+}
